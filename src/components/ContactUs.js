@@ -1,15 +1,10 @@
 import React from 'react';
 import './Contact.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../firebase'; // Import the Firestore instance from firebase.js
 import 'firebase/firestore';
 import { collection, addDoc } from 'firebase/firestore'; // Import collection and addDoc from firestore
 
 const Contact = () => {
-    const notifysuccess = (message) => {
-        toast.success(message);
-    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -29,10 +24,8 @@ const Contact = () => {
                 message: message,
             });
             console.log("Document written with ID: ", docRef.id);
-            notifysuccess("Message sent successfully");
         } catch (error) {
             console.error('Error sending message:', error);
-            toast.error("Error sending message");
         }
     }
 
@@ -79,7 +72,6 @@ const Contact = () => {
                     </form>
                 </div>
             </div>
-            <ToastContainer position="bottom-left" />
         </div>
     );
 };
